@@ -1,57 +1,57 @@
 BODY {
-font-family: Garamond;
+	font-family: Garamond;
 }
 
 TEXTAREA {
-width: 100%;
-height: 300px;
-border-width: 0px;
-resize: none;
-outline: none;
--moz-appearance: none;
+	width: 100%;
+	height: 300px;
+	border-width: 0;
+	resize: none;
+	outline: none;
+	-moz-appearance: none;
 }
 
 .inputarea {
-width: 100%;
-height: 355px;
-margin-bottom: 10px;
+	width: 100%;
+	height: 355px;
+	margin-bottom: 10px;
 
-position: relative;
-padding: 10px 20px 10px;
-border-top: solid 2px #c4df9b;
-background: #edf5e1;
+	position: relative;
+	padding: 10px 20px 10px;
+	border-top: solid 2px #c4df9b;
+	background: #edf5e1;
 }
 
 .step {
-font-size:25px;
-padding-bottom: 10px;
+	font-size:25px;
+	padding-bottom: 10px;
 }
 
 .options {
-padding-top: 15px;
-padding-bottom: 0px;
-padding-left: 3px;
+	padding-top: 15px;
+	padding-bottom: 0;
+	padding-left: 3px;
 }
 
 .result {
-text-align: justify;
-padding-bottom: 15px;
-padding-top: 10px;
+	text-align: justify;
+	padding-bottom: 15px;
+	padding-top: 10px;
 }
 
 .resultcaption {
-font-weight: bold;
-border-bottom: solid grey 1px;
+	font-weight: bold;
+	border-bottom: solid grey 1px;
 }
 
 .readscores {
-border:0px;
+	border:0;
 }
 
 .button {
-	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-moz-box-shadow:inset 0 1px 0 0 #ffffff;
+	-webkit-box-shadow:inset 0 1px 0 0 #ffffff;
+	box-shadow:inset 0 1px 0 0 #ffffff;
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #e9e9e9) );
 	background:-moz-linear-gradient( center top, #f9f9f9 5%, #e9e9e9 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9');
@@ -67,86 +67,86 @@ border:0px;
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
-	text-shadow:1px 1px 0px #ffffff;
+	text-shadow:1px 1px 0 #ffffff;
 }.button:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9) );
-	background:-moz-linear-gradient( center top, #e9e9e9 5%, #f9f9f9 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9');
-	background-color:#e9e9e9;
-	cursor:pointer;
-}.button:active {
-	position:relative;
-	top:1px;
-}
+	 background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9) );
+	 background:-moz-linear-gradient( center top, #e9e9e9 5%, #f9f9f9 100% );
+	 filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9');
+	 background-color:#e9e9e9;
+	 cursor:pointer;
+ }.button:active {
+	  position:relative;
+	  top:1px;
+  }
 
 .hbutton {
-position: absolute;
-top: 0;
-left: -9999px;
+	position: absolute;
+	top: 0;
+	left: -9999px;
 }
 
 .buttonarea {
-text-align: right;
-margin-top: 10px;
+	text-align: right;
+	margin-top: 10px;
 }
 
 .inputbuttonarea {
-text-align: right;
+	text-align: right;
 }
 
 .countertable {
-width: 100%;
-border: 0;
-margin-top: 10px;
-font-size: 14px;
+	width: 100%;
+	border: 0;
+	margin-top: 10px;
+	font-size: 14px;
 }
 
 .header {
-font-size: 40px;
-padding-bottom: 20px;
+	font-size: 40px;
+	padding-bottom: 20px;
 }
 
 .header sup {
-font-size: 20px;
+	font-size: 20px;
 }
 
 .maintable {
-margin: auto;
-padding: 10px;
-border: 0px;
-width: 80%;
+	margin: auto;
+	padding: 10px;
+	border: 0;
+	width: 80%;
 }
 
 .smalltable {
-width: 100%;
-border: 0px;
+	width: 100%;
+	border: 0;
 }
 
 .menu {
-width: 300px;
-vertical-align: top;
+	width: 300px;
+	vertical-align: top;
 }
 
 .menu a:visited, a:active{
-text-decoration: underline;
-color: blue;
+	text-decoration: underline;
+	color: blue;
 }
 
 .mainwindow {
-vertical-align: top;
+	vertical-align: top;
 }
 
 .footer {
-font-size: x-small;
-text-align: left;
-padding-top: 20px;
+	font-size: x-small;
+	text-align: left;
+	padding-top: 20px;
 }
 
 .error {
-font-size:35px;
-padding-bottom:10px;
+	font-size:35px;
+	padding-bottom:10px;
 }
 
 #okSpan {
-	color:green;	
+	color:green;
 }

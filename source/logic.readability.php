@@ -147,5 +147,3 @@ if (isset($_POST['reading_ease']) || isset($_POST['grade_level']) || isset($_POS
 
 // Stage now 1
 //$db_conn->exec("UPDATE sessions SET stage='1' WHERE id='".$session."'");
-
-?>

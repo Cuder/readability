@@ -72,4 +72,3 @@ if (preg_match("/logic.textmark.rtf.php/i", $_SERVER['PHP_SELF'])) header("Locat
     if ($showopt['3'] == 1) $sect->writeText('<br>words with three or more syllables ', $font_long_small, null);
     if ($showopt['4'] == 1) $sect->writeText('<br>formal words ', $font_formal_small, null);
     if ($showopt['3'] == 1 && $showopt['4'] == 1) $sect->writeText('<br>formal words with three or more syllables ', $font_extr_small, null);
-?>

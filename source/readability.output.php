@@ -68,5 +68,3 @@ function grade2title ($grade) {
 		if (round($grade) > 12) $title = "only by a student at college or university (ages may vary)";
 	return $title;
 }
-
-?>

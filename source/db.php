@@ -13,6 +13,3 @@ try {
 	print "<b>Error!</b> " . $e->getMessage() . "<br/>";
 	die();
 }
-
-
-?>

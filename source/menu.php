@@ -49,4 +49,3 @@ echo "<br><br>";
 echo "<a href='index.php'";
 if (isset($session)) echo " target='_blank'";
 echo ">About</a><br>";
-?>

@@ -226,4 +226,3 @@ class Lang_Auto_Detect
 			}	
 	}
 }
-?>

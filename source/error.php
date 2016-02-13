@@ -35,4 +35,3 @@ if ($error == 404) {
 }
 
 echo "<div class='error'>".$error."</div>".$descr;
-?>

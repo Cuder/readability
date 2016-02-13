@@ -377,9 +377,9 @@ public function word_with_three_syllables($word, $blnCountProperNouns) {
          * @param   strText                  Text to be measured
          * @param   blnCountProperNouns      Boolean - should proper nouns be included in words count
          */
-        public function words_with_three_syllables($session,$formalcount) {
+        public function words_with_three_syllables($session,$formalcount=false) {
 			global $db_conn;
-			if ($formalcount) {
+			if ($formalcount == true) {
 				$where = "(tempw.longw='1' OR tempw.formalw='1')";
 			} else {
 				$where = "tempw.longw='1'";
@@ -401,9 +401,9 @@ public function word_with_three_syllables($word, $blnCountProperNouns) {
          * @param   strText      Text to be measured
          * @param   blnCountProperNouns      Boolean - should proper nouns be included in words count
          */
-        public function percentage_words_with_three_syllables($session,$formalcount) {
+        public function percentage_words_with_three_syllables($session,$formalcount = false) {
 			global $db_conn;
-			if ($formalcount) {
+			if ($formalcount == true) {
 				$where = "(tempw.longw='1' OR tempw.formalw='1')";
 			} else {
 				$where = "tempw.longw='1'";
@@ -530,4 +530,3 @@ public function word_with_three_syllables($word, $blnCountProperNouns) {
         }
 
     }
-?>

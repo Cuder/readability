@@ -1,22 +1,22 @@
 #tooltip {
-position:absolute;
-z-index:3000;
-width:250px;
-background-color:#333333;
-opacity:0.85;
-font-family:Arial;
-font-size:13px;
-color:#fff;
-text-align:center;
+    position:absolute;
+    z-index:3000;
+    width:250px;
+    background-color:#333333;
+    opacity:0.85;
+    font-family:Arial;
+    font-size:13px;
+    color:#fff;
+    text-align:center;
 }
 
 #tooltip h3 {
-background-color:black;
-font-weight:bold;
-margin-top:0px;
-margin-bottom:0px;
+    background-color:black;
+    font-weight:bold;
+    margin-top:0;
+    margin-bottom:0;
 }
 
 #tooltip div {
-padding:2 2;
+    padding:2px 2px;
 }

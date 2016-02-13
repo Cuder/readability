@@ -6,5 +6,3 @@ $maxsymbols = 7000; // maximum symbols allowed in the textarea
 $minsymbols = 400; // minimum symbols required in the textarea
 $minwords = 20; // minimum words required in the textarea (not including digits and other stupid numbers)
 $longestw = 45; // the longest English word possible
-
-?>

@@ -127,7 +127,7 @@ for ($i = 0; $i < $intWordCount; $i++) {
 		$tcount = $sth->fetchColumn();	
 			// if the word already exists in the temp table, update the counter plus one
 			if ($tcount > 0) {
-					$tcount = $tcount+1;		
+					$tcount++;
 					$stmt = $db_conn->prepare("UPDATE tempw SET count =:count WHERE word=:word AND session=:session");
 					$stmt->bindParam(':count', $tcount);
 					$stmt->bindParam(':word', $arrWords[$i]);
@@ -165,4 +165,3 @@ $stmt->execute();
 
 fallback("index.php?stage=readability&session=$session");
 }
-?>

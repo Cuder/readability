@@ -128,4 +128,3 @@ function str_split_php4_utf8($str) {
     } 
     return $array; 
 }
-?>

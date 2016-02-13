@@ -28,4 +28,3 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html lang=
 	
 // HTML head ends in here
 echo '</head><body>';
-?>

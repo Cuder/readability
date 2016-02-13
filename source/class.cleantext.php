@@ -11,7 +11,6 @@ function clean_text($strText) {
             $strText = preg_replace('/[\.!?]/', '.', $strText); // Unify terminators
             $strText = trim($strText) . '.'; // Add final terminator, just in case it's missing.
             $strText = preg_replace('/[ ]*(\n|\r\n|\r)[ ]*/', ' ', $strText); // Replace new lines with spaces
-           // $strText = preg_replace('/([\.])[\. ]+/', '$1', $strText); // Check for duplicated terminators
             $strText = trim(preg_replace('/[ ]*([\.])/', '$1 ', $strText)); // Pad sentence terminators         
             // Remove "words" comprised only of numbers
             while (preg_match('/ [0-9]+ /', $strText)) {
@@ -35,4 +34,3 @@ function clean_text($strText) {
             $strText = preg_replace('/([\.])[\. ]+/', '$1 ', $strText); // Check for duplicated terminators
             return $strText;
 }
-?>

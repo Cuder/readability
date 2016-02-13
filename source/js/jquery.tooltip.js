@@ -37,11 +37,7 @@
 			top: 15,
 			left: 15,
 			id: "tooltip"
-		},
-		block: function() {
-			$.tooltip.blocked = !$.tooltip.blocked;
-		}
-	};
+		}};
 	
 	$.fn.extend({
 		tooltip: function(settings) {

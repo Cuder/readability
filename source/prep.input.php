@@ -57,4 +57,3 @@ echo "</div>";
 // JS for counting words/charachters
 echo "<script type='text/javascript' src='js/textareaCountNew.js'></script>";
 }
-?>

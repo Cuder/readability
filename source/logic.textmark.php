@@ -38,4 +38,3 @@ $fwords = (isset($_POST['fwords']))?1:0;
 $db_conn->exec("UPDATE sessions SET showopt=INSERT(showopt,2,5,'".$showstats.$textshow.$longwords.$fwords."'),stage='1' WHERE id='".$session."'");
 
 fallback("index.php?stage=result&session=$session");
-?>

@@ -62,4 +62,3 @@ echo "<script type='text/javascript'>
 } else {
 	fallback("index.php");
 }
-?>

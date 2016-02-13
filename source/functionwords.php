@@ -183,4 +183,3 @@ $common = Array (
 	);
 	
 	$array = "'". implode("', '", $common) ."'";
-?>

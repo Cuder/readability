@@ -11,7 +11,6 @@ var okSpanElem = document.getElementById('okSpan');
 
 var syllablesNumber;
 var wordsNumber;
-
 submitButton.style.display = "none";
 clearButton.style.display = "none";
 
@@ -39,9 +38,10 @@ textArea.oninput = function() {
   }
   
   var textToCountWords = noToSpace(noToNumbersCount(deleteBr(text)));
+  //noinspection UnnecessaryLocalVariableJS
   var wordsNumber = textToCountWords.split(" ").length;
   wordsNumberElem.innerHTML = wordsNumber;
-}
+};
 
 clearButton.onclick = function() {
   var clearAnswer = confirm("Are you sure?");
@@ -51,7 +51,7 @@ clearButton.onclick = function() {
   okSpanElem.innerHTML = "";
   syllablesNumberElem.innerHTML = "0/" + maxSyllables; 
   wordsNumberElem.innerHTML = "0";
-}
+};
 
 //Вспомогательные функции
 

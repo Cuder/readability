@@ -38,5 +38,3 @@ echo "<div class='result'>";
 echo "In case of suggestions, bug reports and other important stuff, please feel free to contact at <a href='mailto:me@nikitakovin.ru'>me@nikitakovin.ru</a>.<br>
 The source code is available in <a href='https://github.com/Cuder/readability' target='_blank'>GitHub</a>.";
 echo "</div>";
-
-?>

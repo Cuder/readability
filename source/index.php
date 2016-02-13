@@ -85,4 +85,3 @@ echo "</table>";
 
 // HTML ends in here
 echo "</body></html>";
-?>

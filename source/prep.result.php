@@ -245,4 +245,3 @@ echo "<input type='button' onclick='
 } else {
 	fallback("index.php");
 }
-?>
