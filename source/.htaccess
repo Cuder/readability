@@ -6,9 +6,9 @@ Options -Indexes
 </Files>
 # Rewrite rules
 RewriteEngine On
-RewriteRule ^/?input/?$ index.php?stage=input [L,QSA]
-RewriteRule ^/?([^/d]+)/(input|readability|otheroptions|result|getrtf)/?$ index.php?stage=$2&session=$1 [L,QSA]
-RewriteRule ^/?error/?$ index.php?error [L,QSA]
+RewriteRule ^/?input/?$ /index.php?stage=input [L,QSA]
+RewriteRule ^/?([^/d]+)/(input|readability|otheroptions|result|getrtf)/?$ /index.php?stage=$2&session=$1 [L,QSA]
+RewriteRule ^/?error/?$ /index.php?error [L,QSA]
 # Deny access to content in subfolders
 RewriteRule ^(controller|libs|model|view)/.*(php|xml|tpl) - [R=403,L,NC]
 # Redirects to error pages
