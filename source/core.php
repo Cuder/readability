@@ -1,24 +1,30 @@
 <?php
-// forbid to open this file directly from the browser
-if (preg_match("/core.php/i", $_SERVER['PHP_SELF'])) header("Location: index.php");
+// Setting debug level
+if ($debugging == true) {
+	ini_set('display_errors', 1);
+	error_reporting(E_ALL);
+}
 
-// debug level
-ini_set('display_errors', 1); 
-error_reporting(E_ALL); 
+// Forbid the user to enter random variables in the address bar of the browser
+if ($_GET) {
+	$allowedVar = array("stage","error","session");
+	foreach ($_GET as $key => $value) {
+		if (!in_array($key,$allowedVar) || ($value == "" && $key != "error") || ($value != "" && $key == "error")) {
+			fallback();
+		}
+	}
+}
 
-// if the user is too stupid not to use IE
+// Throwing an error to an IE user
+if (!isset($error) && maxsite_testIE()) {
+	$_SESSION['errorCode'] = "noie";
+	fallback("error");
+}
 function maxsite_testIE() {
-    $user_agent = $_SERVER['HTTP_USER_AGENT'];
     $browserIE = false;
-    if ( stristr($user_agent, 'MSIE 13.0') ) $browserIE = true; // IE13
-    if ( stristr($user_agent, 'MSIE 12.0') ) $browserIE = true; // IE12
-    if ( stristr($user_agent, 'MSIE 11.0') ) $browserIE = true; // IE11
-    if ( stristr($user_agent, 'MSIE 10.0') ) $browserIE = true; // IE10
-    if ( stristr($user_agent, 'MSIE 9.0') ) $browserIE = true; // IE9
-    if ( stristr($user_agent, 'MSIE 8.0') ) $browserIE = true; // IE8
-    if ( stristr($user_agent, 'MSIE 7.0') ) $browserIE = true; // IE7
-    if ( stristr($user_agent, 'MSIE 6.0') ) $browserIE = true; // IE6
-    if ( stristr($user_agent, 'MSIE 5.0') ) $browserIE = true; // IE5
+	for ($i=5; $i<12; $i++) {
+		if (stristr($_SERVER['HTTP_USER_AGENT'],'MSIE '.$i.'.0')) $browserIE = true;
+	}
     return $browserIE;
 }
 
@@ -33,7 +39,8 @@ if (ini_get('register_globals') != 1) {
 
 // Prevent any possible XSS attacks via $_GET.
 if (stripget($_GET)) {
-	die("Prevented a XSS attack through a GET variable!");
+	$_SESSION['errorCode'] = "xss";
+	fallback("error");
 }
 function stripget($check_url) {
 	$return = false;
@@ -52,79 +59,38 @@ function stripget($check_url) {
 	return $return;
 }
 
-// Start Output Buffering
-//ob_start();
-//ob_start("ob_gzhandler");
-
 // Fallback to safe area in event of unauthorised access
-function fallback($location) {
-	header("Location: ".$location);
+function fallback($location = "") {
+	header("Location: http://".$_SERVER['SERVER_NAME']."/".$location);
 	exit;
 }
 
-// Strip Input Function, prevents HTML in unwanted places
-function stripinput($text) {
-	if ('QUOTES_GPC') $text = stripslashes($text);
-	$search = array("\"", "'", "\\", '\"', "\'", "<", ">", "&nbsp;");
-	$replace = array("&quot;", "&#39;", "&#92;", "&quot;", "&#39;", "&lt;", "&gt;", " ");
-	$text = str_replace($search, $replace, $text);
-	return $text;
-}
-
-// htmlentities is too agressive so we use this function
-function phpentities($text) {
-	$search = array("&", "\"", "'", "\\", "<", ">");
-	$replace = array("&amp;", "&quot;", "&#39;", "&#92;", "&lt;", "&gt;");
-	$text = str_replace($search, $replace, $text);
-	return $text;
-}
-
-// Trim a line of text to a preferred length
-function trimlink($text, $length) {
-	$dec = array("\"", "'", "\\", '\"', "\'", "<", ">");
-	$enc = array("&quot;", "&#39;", "&#92;", "&quot;", "&#39;", "&lt;", "&gt;");
-	$text = str_replace($enc, $dec, $text);
-	if (strlen($text) > $length) $text = substr($text, 0, ($length-3))."...";
-	$text = str_replace($dec, $enc, $text);
-	return $text;
-}
-
-// Validate numeric input
-function isNum($value) {
-	return (preg_match("/^[0-9]+$/", $value));
-}
-
-// Format the date & time accordingly
-function showdate($format, $val) {
-	global $settings;
-	if ($format == "shortdate" || $format == "longdate" || $format == "forumdate") {
-		return strftime($settings[$format], $val+($settings['timeoffset']*3600));
-	} else {
-		return strftime($format, $val+($settings['timeoffset']*3600));
+// DB connection
+function connectDB() {
+	global $db_host,$db_name,$db_user,$db_pass;
+	try {
+		$db_conn = new PDO('mysql:host='.$db_host.';dbname='.$db_name.'', $db_user, $db_pass, array(PDO::ATTR_PERSISTENT => true));
+		$db_conn->exec('SET NAMES utf8');
+		return $db_conn;
+	} catch (PDOException $e) {
+		$_SESSION['errorCode'] = "db";
+		$_SESSION['dbmessage'] = $e->getMessage();
+		fallback("error");
 	}
 }
 
-function str_split_php4_utf8($str) { 
-    // place each character of the string into and array 
-    $split=1; 
-    $array = array(); 
-    for ( $i=0; $i < strlen( $str ); ){ 
-        $value = ord($str[$i]); 
-        if($value > 127){ 
-            if($value >= 192 && $value <= 223) 
-                $split=2; 
-            elseif($value >= 224 && $value <= 239) 
-                $split=3; 
-            elseif($value >= 240 && $value <= 247) 
-                $split=4; 
-        }else{ 
-            $split=1; 
-        } 
-            $key = NULL; 
-        for ( $j = 0; $j < $split; $j++, $i++ ) { 
-            $key .= $str[$i]; 
-        } 
-        array_push( $array, $key ); 
-    } 
-    return $array; 
+// Check if a session exists and correct
+function checkSession($session) {
+	global $db_conn,$smarty;
+	$sth = $db_conn->prepare("SELECT stage FROM sessions WHERE id='".$session."' AND ip=INET_ATON('".$_SERVER['REMOTE_ADDR']."')");
+	$sth->execute();
+	$ifSessionComplete = $sth->fetchColumn();
+	if ($ifSessionComplete == "") {
+		$_SESSION['errorCode'] = "session";
+		fallback("error");
+	} else {
+		$smarty->assign('session',$session);
+		$smarty->assign('ifSessionComplete',$ifSessionComplete);
+		return true;
+	}
 }

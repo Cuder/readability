@@ -15,7 +15,7 @@ It is also possible to display statistics of your text. This includes the number
 Currently, only English is supported.
     
 Homepage and Live Version
-    http://nikitakovin.ru/helper/
+    http://rdb.nikitakovin.ru
 
 License
     http://www.opensource.org/licenses/bsd-license.php

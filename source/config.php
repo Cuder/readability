@@ -1,8 +1,16 @@
 <?php
-// forbid to open this file directly from the browser
-if (preg_match("/config.php/i", $_SERVER['PHP_SELF'])) header("Location: index.php");
+// DB access parameters
+$db_host = 'localhost';
+$db_name = 'name';
+$db_user = 'user';
+$db_pass = 'password';
 
-$maxsymbols = 7000; // maximum symbols allowed in the textarea
-$minsymbols = 400; // minimum symbols required in the textarea
-$minwords = 20; // minimum words required in the textarea (not including digits and other stupid numbers)
-$longestw = 45; // the longest English word possible
+// Text area input control
+$maxsymbols = 7000; // Maximum symbols allowed in the textarea
+$minsymbols = 400; // Minimum symbols required in the textarea
+$minwords = 20; // Minimum words required in the textarea (not including digits)
+$longestw = 45; // The longest English word possible, letters
+
+$swVersion = "1.0.2b"; // Version of the tool
+$debugging = true; // Enables/disables displaying of errors
+$langDetectAPI = "APIkey"; // API key for detectlanguage.com

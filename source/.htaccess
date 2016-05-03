@@ -1,5 +1,16 @@
-AddDefaultCharset utf-8
+# Forbid listing of files
 Options -Indexes
-<Files db.php> 
-  deny from all 
+# Deny access to protected files
+<Files ~ "^(config|cron|core).php$">
+	Deny from all
 </Files>
+# Rewrite rules
+RewriteEngine On
+RewriteRule ^/?input/?$ index.php?stage=input [L,QSA]
+RewriteRule ^/?([^/d]+)/(input|readability|otheroptions|result|getrtf)/?$ index.php?stage=$2&session=$1 [L,QSA]
+RewriteRule ^/?error/?$ index.php?error [L,QSA]
+# Deny access to content in subfolders
+RewriteRule ^(controller|libs|model|view)/.*(php|xml|tpl) - [R=403,L,NC]
+# Redirects to error pages
+ErrorDocument 403 /error/
+ErrorDocument 404 /error/
